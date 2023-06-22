@@ -22,16 +22,17 @@ for (const sectionData of sections) {
 }
 
 function getSections(sectionId, navData, listofClass) {
+    //Dynamicly adding Sections
     navList.innerHTML += `<a href="#${sectionId}" class="menu__link"><li>${navData}</li></a>`;
 
+    //Distinguishing the Sections with active state while on viewport
     const sectionView = document.getElementById(`${sectionId}`);
     
-    document.addEventListener('scroll', function(e){
-        console.log(e);
+    document.addEventListener('scroll', function(){
         const rectTop = sectionView.getBoundingClientRect().top.toFixed();
-        console.log(rectTop);
+        // console.log(rectTop);
         if(rectTop <= 35 &&  rectTop >= 0){
-            console.log(listofClass);
+            // console.log(listofClass);
             listofClass.add('active-class');
             
         }
@@ -43,22 +44,58 @@ function getSections(sectionId, navData, listofClass) {
          }
     })
     
+    navList.addEventListener('click', function(event){
+        event.preventDefault();
+        const links = document.querySelector('a').href;
+        console.log(links);
+        links.scrollTo({
+            top:100,
+            bottom: 100,
+            bahavior: 'smooth'
+        });
+    })
     
     
     
     
 }
 
-//Distinguishing the Sections while on viewport
-// const sectionWithID = document.getElementById('section1');
-// let rect = sectionWithID.getBoundingClientRect().top.toFixed();
-// console.log(rect);
 
-const sectionWithQuery = document.querySelectorAll('section');
-console.log(sectionWithQuery);
+// const sectionWithQuery = document.querySelectorAll('section');
+// console.log(sectionWithQuery);
 
-// navList.addEventListener("click", (e) => {
+// Scroll to Section effect
+// const links = document.querySelectorAll('a');
+
+// for(const index of links){
+//     const linkElem = index;
+//     handleDefault(linkElem);
+
+// }
 
 
 
-// })
+// function handleDefault(linkElem){
+//     const linkRect = linkElem.getBoundingClientRect();
+//     // console.log(linkRect);
+//     linkElem.addEventListener('click', function(event){
+//         linkElem.scroll({top: 100,
+//         left: 100,
+//     behavior: "smooth"});
+//         event.preventDefault();
+//     })
+    
+
+// }
+
+
+
+// linkID.addEventListener("click", handleClick);
+
+// function handleClick(e){
+//     e.preventDefault();
+
+
+
+
+// }
