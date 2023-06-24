@@ -39,7 +39,7 @@ console.log(section);
 
 for(const sectionIndex of section){
     const navItems = document.createElement('li');
-    navItems.innerHTML = `<a href="${sectionIndex.link}" id="${sectionIndex.id}" class="menu__link">${sectionIndex.name}</a>`;
+    navItems.innerHTML = `<a href="${sectionIndex.link}" class="menu__link">${sectionIndex.name}</a>`;
     navList.appendChild(navItems);
 
 }
@@ -49,7 +49,7 @@ for(const sectionIndex of section){
      for(const numOfSection of sections){    
         const rect = numOfSection.getBoundingClientRect();
         const rectTop = rect.top.toFixed();
-        console.log(rect);
+        // console.log(rect);
     
         if(rectTop <= 35 &&  rectTop >= 0){
             // console.log(listofClass);
@@ -72,22 +72,25 @@ for(const sectionIndex of section){
 
 navList.addEventListener('click', function(event){
     console.log(event);
-    // event.preventDefault();
-    console.log(event.target.id);
+    event.preventDefault();
    
-    // const section = document.getElementById("section1");
-    // console.log(section);
-    // const selected = document.getElementById(`${sectionIndex.id}`);
-    const selected = document.querySelector(`section#${event.target.id}`);
+    // const selected = document.getElementById(`section1`);
 
-    const linkRect = selected.getBoundingClientRect();
-    console.log(linkRect);
+    const selected = document.querySelector(`section${event.target.hash}`);
     console.log(selected);
-    selected.scrollTo({
-        top: `${linkRect.top.toFixed()}`,
-        left: `${linkRect.bottom.toFixed()}`,
+
+    // No need to change
+    selected.scrollIntoView({
+        block: 'start',
+        inline: 'nearest',
         behavior: 'smooth'
-    });
+    })
+    // selected.scrollTo({
+    //     top: `${linkRect.top.toFixed()}`,
+    //     left: `${linkRect.bottom.toFixed()}`,
+    //     behavior: 'smooth',
+        
+    // });
      
 })
 
