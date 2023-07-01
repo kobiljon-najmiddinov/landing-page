@@ -1,7 +1,7 @@
 // Global Variables
-const navList = document.getElementById("navbar__list");
+const navList = document.getElementById('navbar__list');
 
-const sections = document.querySelectorAll("section"); //"sections" variable to count the overall sections
+const sections = document.querySelectorAll('section'); //"sections" variable to count the overall sections
 
 // Store section id, title, link
 // Manually storing information
@@ -18,10 +18,10 @@ const sectionInfo = [
 let section = []; //array to store information
 
 // Listening the Changes that wil be made to DOM
-document.addEventListener("DOMContentLoaded", dynamicallyUpdateSection);
+document.addEventListener('DOMContentLoaded', dynamicallyUpdateSection);
 // Below, if new Sections are Added or Removed, it will call the function to update the section array
-document.addEventListener("DOMNodeInserted", dynamicallyUpdateSection);
-document.addEventListener("DOMNodeRemoved", dynamicallyUpdateSection);
+document.addEventListener('DOMNodeInserted', dynamicallyUpdateSection);
+document.addEventListener('DOMNodeRemoved', dynamicallyUpdateSection);
 
 function dynamicallyUpdateSection(){
     section = Array.from(document.querySelectorAll("section")).map((section)=>({
@@ -39,7 +39,7 @@ console.log(section);
 // if added one more section then 4 sections will be visible on nav
 
 for(const sectionIndex of section){
-    const navItems = document.createElement("li");
+    const navItems = document.createElement('li');
     navItems.innerHTML = `<a href="${sectionIndex.link}" class="navbar__menu menu__link">${sectionIndex.name}</a>`;
     navList.appendChild(navItems);
 
@@ -47,7 +47,7 @@ for(const sectionIndex of section){
 
  // Distinguishing the Sections with active state while on viewport
 
- document.addEventListener("scroll", function(){
+ document.addEventListener('scroll', function(){
      for(const numOfSection of sections){    
         const rect = numOfSection.getBoundingClientRect(); 
         const rectTop = rect.top.toFixed(); //Top value of rect and rounded to Fixed value
@@ -55,14 +55,14 @@ for(const sectionIndex of section){
         // classList property with add(), remove(), toggle(), and contains() methods:
         // Used to add and remove active-class depending on viewport
         if(rectTop <= 35 &&  rectTop >= 0){
-            numOfSection.classList.add("active-class");
+            numOfSection.classList.add('active-class');
             
         }
         else if(rectTop <= -77){
-            numOfSection.classList.remove("active-class");
+            numOfSection.classList.remove('active-class');
         }
-         else if(rectTop >= 200 | rectTop <=-77 && numOfSection.classList.contains("active-class") == true){
-             numOfSection.classList.remove("active-class");
+         else if(rectTop >= 200 | rectTop <=-77 && numOfSection.classList.contains('active-class') == true){
+             numOfSection.classList.remove('active-class');
          }
          
         
@@ -93,7 +93,7 @@ window.addEventListener('scroll', handleScroll);
 
 // Scroll to Section effect
 
-navList.addEventListener("click", function(event){
+navList.addEventListener('click', function(event){
     event.preventDefault(); //preventing Anchor attribute's default action like instantly jumping to the clicked item
 
     // Selecting sections by event.target's provided information. 
@@ -103,9 +103,9 @@ navList.addEventListener("click", function(event){
 
     // Scrolling to Element's position which is selected by its id
     selected.scrollIntoView({
-        block: "start",
-        inline: "nearest",
-        behavior: "smooth" //how animation happens
+        block: 'start',
+        inline: 'nearest',
+        behavior: 'smooth' //how animation happens
     });
     
      
