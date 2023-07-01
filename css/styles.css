@@ -84,7 +84,7 @@ section {
 
 .navbar__menu li {
     display: inline-block;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .navbar__menu .menu__link {
@@ -92,11 +92,11 @@ section {
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: #264653;
 }
 
 .navbar__menu .menu__link:hover {
-    background: #333;
+    background: #457b9d;
     color: #fff;
     transition: ease 0.3s all;
 }
@@ -105,7 +105,7 @@ section {
 
 /* Header Styles */
 .page__header {
-    background: #fff;
+    background:  #219ebc; /*#fff;*/
     position: fixed;
     top: 0;
     width: 100%;
@@ -130,6 +130,11 @@ section {
 .landing__container {
     padding: 1em;
     text-align: left;
+}
+@media only screen and (max-width: 559px){
+    .landing__container{
+        padding: 2em;
+    }
 }
 
 @media only screen and (min-width: 35em) {
@@ -238,54 +243,45 @@ section.active-class .landing__container::after {
 /* Media Queries */
 
 /* Small Screen */
-@media(min-width: 360px) and (max-width: 640px){
-    .navbar__menu{
-        
+@media(min-width: 280px) and (max-width: 459px){
+    h1{
+        margin-top: 5em;
     }
     .navbar__menu ul{
-        display: flex;
         flex-flow: row wrap;
-        gap: 10px;
-        height: 60px;
+        gap: 2px;
+        height: 120px;
         width: 100%;
-        font-size: 1em;
-        font-family: sans-serif;
-        margin-right: 100px;
-        border: 2px dashed blue;
+        font-size: 1.2em;
         
     }
-    
-    .navbar__menu li {
-        display: inline-block;
-        height: 60px;
-        border: 1px solid red;
+    .landing__container{
+        padding-top: 6em;
     }
-    
-    .navbar__menu .menu__link {
-        display: block;
-        height: 40px;
-        width: 75px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #000;
+}
+
+@media (min-width: 460px) and (max-width: 640px){
+    h1{
+        font-size: 4em;
+        margin-top: 3em;
     }
-    
-    .navbar__menu .menu__link:hover {
-        height: 30px;
-        background: #333;
-        color: #fff;
-        transition: ease 0.3s all;
-    }
-    
-    
-    
-    /* Header Styles */
-    .page__header {
-        background: #fff;
-        position: fixed;
-        top: 0;
+    .navbar__menu ul{
+        font-size: 1.1em;
         width: 100%;
-        height: 60px;
-        z-index: 5;
+        height: 70px;
+        text-align: center;
+        
     }
+    .landing__container{
+        padding-top: 5em;
+    }
+    
+}
+
+@media(min-width: 640px) and (max-width: 759px ){
+    .navbar__menu ul{
+        font-size: 1.4em;
+        width: 100%;
+    }
+
 }

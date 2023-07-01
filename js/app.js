@@ -46,11 +46,12 @@ for(const sectionIndex of section){
 }
 
  // Distinguishing the Sections with active state while on viewport
+
  document.addEventListener("scroll", function(){
      for(const numOfSection of sections){    
         const rect = numOfSection.getBoundingClientRect(); 
         const rectTop = rect.top.toFixed(); //Top value of rect and rounded to Fixed value
-    
+        // console.log(rectTop);
         // classList property with add(), remove(), toggle(), and contains() methods:
         // Used to add and remove active-class depending on viewport
         if(rectTop <= 35 &&  rectTop >= 0){
@@ -68,6 +69,26 @@ for(const sectionIndex of section){
      }
     
 });
+const nav = document.querySelector('nav');
+
+let scrollTimer; //scroll event Timer to store setTimeout delay time
+
+function handleScroll(){
+    //clearTimeout clears out the delay time of setTimeout. In this case it is 2secs
+    clearTimeout(scrollTimer); 
+    // Nav bar will reappear after hiding it after setTimeout cleared
+    nav.style.display = 'block';
+    
+        scrollTimer = setTimeout(()=>{
+            // Hiding Fixed nav bar while not scrolling
+            nav.style.display = 'none';
+            console.log('scrolling stopped');
+        }, '2000'); // Delay time: 2secs
+        
+        
+}
+// Listenins scroll event on Window
+window.addEventListener('scroll', handleScroll);
 
 
 // Scroll to Section effect
